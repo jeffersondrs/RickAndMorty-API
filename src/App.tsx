@@ -8,7 +8,7 @@ import SearchBox from "./components/search-box/Search.componet";
 function App() {
   const [searchField, setSearchField] = useState("");
   const [chars, setChars] = useState([]);
-  const [filterMonsters, setFilterMonsters] = useState(chars);
+  const [filterChars, setFilterChars] = useState(chars);
   const [url, setUrl] = useState<Url>({
     url: `https://rickandmortyapi.com/api/character?page=1`,
   });
@@ -26,10 +26,10 @@ function App() {
     }
   );
   useEffect(() => {
-    const filterMonsters = chars.filter((char: Character) => {
+    const filterChars = chars.filter((char: Character) => {
       return char.name.toLowerCase().includes(searchField);
     });
-    setFilterMonsters(filterMonsters);
+    setFilterChars(filterChars);
   }, [chars, searchField]);
 
   const onSearchChange = (event: { target: { value: string } }) => {
@@ -50,9 +50,9 @@ function App() {
       <div>
         <SearchBox
           onChangeHandler={onSearchChange}
-          placeHolder="Seach Monster"
+          placeHolder="Seach Character"
         />
-        <CardList characters={filterMonsters} />
+        <CardList characters={filterChars} />
       </div>
     </div>
   );
