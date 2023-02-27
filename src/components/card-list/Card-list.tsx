@@ -3,7 +3,7 @@ import { Character } from "../../types";
 
 export default function CardList( {characters}: {characters: Character[] | undefined}) {
   return (
-    <div className="flex flex-row flex-wrap">
+    <div className="flex flex-row flex-wrap justify-center py-5">
       {characters?.map((character) => {
         return (
           <Card
